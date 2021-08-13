@@ -1,0 +1,34 @@
+$light-primary: (Main:#610BEF,
+    contrast: (Main: #ffffff));
+
+$light-accent: (Main: #005BD4,
+    contrast: (Main: #ffffff));
+
+$light-warn: (Main: #EAAC30,
+    contrast: (Main: #ffffff));
+
+$light-custom-collection: (
+    success : #008A00,
+    danger: #CA024F,
+    contrast: (
+        success : #FFFFFF,
+        danger: #FFFFFF,
+    ));
+
+$light-primary-palette: mat-palette($light-primary, Main);
+$light-accent-palette: mat-palette($light-accent, Main);
+$light-warn-palette: mat-palette($light-warn, Main);
+$light-custom-palette: mat-palette($light-custom-collection, light-custom-palette);
+
+$light-theme: mat-light-theme($light-primary-palette, $light-accent-palette, $light-warn-palette);
+$light-theme: map_merge($light-theme, (custom: $light-custom-palette));
+
+.mat-success {
+    background-color: mat-color($light-custom-palette, success);
+    color: mat-color($light-custom-palette, success-contrast);
+}
+
+.mat-danger {
+    background-color: mat-color($light-custom-palette, danger);
+    color: mat-color($light-custom-palette, danger-contrast);
+}

@@ -1,0 +1,34 @@
+$dark-primary: (Main:#A996FF,
+    contrast: (Main: #4700AB));
+
+$dark-accent: (Main: #50C8FC,
+    contrast: (Main: #0041AC));
+
+$dark-warn: (Main: #FFDF9A,
+    contrast: (Main: #946300));
+
+$dark-custom-collection: (
+    success : #A6F787,
+    danger: #FF75CB,
+    contrast: (
+        success : #067306,
+        danger: #9E0038,
+    ));
+
+$dark-primary-palette: mat-palette($dark-primary, Main);
+$dark-accent-palette: mat-palette($dark-accent, Main);
+$dark-warn-palette: mat-palette($dark-warn, Main);
+$dark-custom-palette: mat-palette($dark-custom-collection, custom);
+
+$dark-theme: mat-dark-theme($dark-primary-palette, $dark-accent-palette, $dark-warn-palette);
+$dark-theme: map_merge($dark-theme, (custom: $dark-custom-palette));
+
+.mat-success {
+    background-color: mat-color($dark-custom-palette, success);
+    color: mat-color($dark-custom-palette, success-contrast);
+}
+
+.mat-danger {
+    background-color: mat-color($dark-custom-palette, danger);
+    color: mat-color($dark-custom-palette, danger-contrast);
+}
