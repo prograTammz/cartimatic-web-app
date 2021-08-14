@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @use '~@angular/material' as mat;
 
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
@@ -11,47 +11,63 @@
 
 @include mat.core();
 
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Poppins, "Helvetica Neue", sans-serif;
+  background-color: #f7f7fc;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Poppins, "Helvetica Neue", sans-serif; }
-
-$custom-typography: mat-typography-config($font-family: '"Poppins", sans-serif;');
+$custom-typography: mat-typography-config(
+  $font-family: '"Poppins", sans-serif;',
+);
 
 @include mat-core($custom-typography);
 
-$theme: map_merge($light-theme, (custom: $light-custom-palette));
+$theme: map_merge(
+  $light-theme,
+  (
+    custom: $light-custom-palette,
+  )
+);
 @include angular-material-theme($theme);
 
+.dark {
+  background-color: black;
+  color: white;
 
-.dark{
-    background-color: black;
-    color: white;
+  $theme: map_merge(
+    $dark-theme,
+    (
+      custom: $dark-custom-palette,
+    )
+  );
+  @include angular-material-theme($theme);
 
-    $theme: map_merge($dark-theme, (custom: $dark-custom-palette));
-    @include angular-material-theme($theme);
+  $custom-colors: map-get($theme, custom);
 
-    $custom-colors: map-get($theme, custom);
+  .mat-success {
+    background-color: mat-color($custom-colors, success);
+    color: mat-color($custom-colors, success-contrast);
+  }
 
-    .mat-success {
-        background-color: mat-color($custom-colors, success);
-        color: mat-color($custom-colors, success-contrast);
-    }
-
-    .mat-danger {
-        background-color: mat-color($custom-colors, danger);
-        color: mat-color($custom-colors, danger-contrast);
-    }
+  .mat-danger {
+    background-color: mat-color($custom-colors, danger);
+    color: mat-color($custom-colors, danger-contrast);
+  }
 }
 
 $custom-colors: map-get($theme, custom);
 
 .mat-success {
-    background-color: mat-color($custom-colors, success);
-    color: mat-color($custom-colors, success-contrast);
+  background-color: mat-color($custom-colors, success);
+  color: mat-color($custom-colors, success-contrast);
 }
 
 .mat-danger {
-    background-color: mat-color($custom-colors, danger);
-    color: mat-color($custom-colors, danger-contrast);
+  background-color: mat-color($custom-colors, danger);
+  color: mat-color($custom-colors, danger-contrast);
 }
-
