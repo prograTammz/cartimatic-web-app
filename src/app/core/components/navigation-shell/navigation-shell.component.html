@@ -1,0 +1,193 @@
+<header>
+  <mat-toolbar
+    class="bg-gray-200 dark:bg-gray-800 h-12 md:h-16 min-h-0 fixed top-0 z-10"
+  >
+    <mat-toolbar-row class="flex justify-between">
+      <!-- SideNav toggle button -->
+      <div class="flex items-center">
+        <!-- Menu Button -->
+        <button
+          mat-icon-button
+          class="hidden md:block"
+          aria-label="Toggle side menu"
+          role="button"
+          (click)="sideNav.toggle()"
+        >
+          <mat-icon class="material-icons-round">menu</mat-icon>
+        </button>
+        <!-- Return Button -->
+        <button mat-icon-button class="block md:hidden">
+          <mat-icon svgIcon="back"></mat-icon>
+        </button>
+
+        <!-- Page Title -->
+        <span class="font-medium text-lg ml-2">Products</span>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center">
+        <!-- Help Button -->
+        <button mat-icon-button>
+          <mat-icon svgIcon="help">help_outline</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</header>
+<!-------------------SIDENAV--------------------- -->
+<mat-sidenav-container class="sidenav-container" [hasBackdrop]="false">
+  <mat-sidenav
+    #sideNav
+    opened="true"
+    [opened]="isDesktop ? true : false"
+    [mode]="isDesktop ? 'side' : 'over'"
+    class="bg-gray-50 dark:bg-gray-700 mt-16 fixed w-64 border-0"
+  >
+    <mat-nav-list class="flex flex-col">
+      <mat-list-item
+        class="flex items-center my-2"
+        [routerLinkActive]="['is-active']"
+        routerLink="/app/summary"
+      >
+        <mat-icon class="material-icons-round">stacked_line_chart</mat-icon>
+        <span class="mx-4 font-medium">{{ "Navigation.summary" }}</span>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item
+        class="flex items-center my-2"
+        [routerLinkActive]="['is-active']"
+        routerLink="/app/summary"
+      >
+        <mat-icon class="material-icons-round"> menu_book</mat-icon>
+        <span class="mx-4">{{ "Navigation.product_catalogue" }}</span>
+      </mat-list-item>
+      <mat-list-item
+        class="flex items-center my-2"
+        [routerLinkActive]="['is-active']"
+        routerLink="/app/summary"
+      >
+        <mat-icon class="material-icons-round"> inventory_2</mat-icon>
+        <span class="mx-4">{{ "Navigation.stock" }}</span>
+      </mat-list-item>
+      <mat-list-item
+        class="flex items-center my-2"
+        [routerLinkActive]="['is-active']"
+        routerLink="/app/summary"
+      >
+        <mat-icon class="material-icons-round"> category</mat-icon>
+        <span class="mx-4">{{ "Navigation.category" }}</span>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item
+        class="flex items-center my-2"
+        [routerLinkActive]="['is-active']"
+        routerLink="/app/summary"
+      >
+        <mat-icon class="material-icons-round"> point_of_sale</mat-icon>
+        <span class="mx-4">{{ "Navigation.category" }}</span>
+      </mat-list-item>
+      <mat-list-item
+        class="flex items-center my-2"
+        [routerLinkActive]="['is-active']"
+        routerLink="/app/summary"
+      >
+        <mat-icon class="material-icons-round"> assignment</mat-icon>
+        <span class="mx-4">{{ "Navigation.category" }}</span>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item
+        class="flex items-center my-2"
+        [routerLinkActive]="['is-active']"
+        routerLink="/app/summary"
+      >
+        <mat-icon class="material-icons-round"> people</mat-icon>
+        <span class="mx-4">{{ "Navigation.category" }}</span>
+      </mat-list-item>
+      <mat-list-item
+        class="flex items-center my-2"
+        [routerLinkActive]="['is-active']"
+        routerLink="/app/summary"
+      >
+        <mat-icon class="material-icons-round"> engineering</mat-icon>
+        <span class="mx-4">{{ "Navigation.category" }}</span>
+      </mat-list-item>
+      <mat-list-item
+        class="flex items-center my-2"
+        [routerLinkActive]="['is-active']"
+        routerLink="/app/summary"
+      >
+        <mat-icon class="material-icons-round"> manage_accounts</mat-icon>
+        <span class="mx-4">{{ "Navigation.category" }}</span>
+      </mat-list-item>
+      <mat-list-item
+        class="flex items-center my-2"
+        [routerLinkActive]="['is-active']"
+        routerLink="/app/summary"
+      >
+        <mat-icon class="material-icons-round"> settings</mat-icon>
+        <span class="mx-4">{{ "Navigation.category" }}</span>
+      </mat-list-item>
+      <mat-list-item
+        class="flex items-center my-2"
+        [routerLinkActive]="['is-active']"
+        routerLink="/app/summary"
+      >
+        <mat-icon class="material-icons-round"> settings</mat-icon>
+        <span class="mx-4">{{ "Navigation.category" }}</span>
+      </mat-list-item>
+      <mat-list-item
+        class="flex items-center my-2"
+        [routerLinkActive]="['is-active']"
+        routerLink="/app/summary"
+      >
+        <mat-icon class="material-icons-round"> contact_support</mat-icon>
+        <span class="mx-4">{{ "Navigation.category" }}</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="mt-12 md:mt-16 bg-gray-200 dark:bg-black h-full">
+    content
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<nav
+  id="bottomNavBar"
+  role="navigation"
+  class="
+    flex flex-auto
+    md:hidden
+    bg-gray-50
+    dark:bg-gray-800
+    text-gray-600
+    dark:text-gray-500
+    w-full
+    h-16
+    py-2
+    fixed
+    bottom-0
+    justify-evenly
+    items-center
+    z-10
+  "
+>
+  <button mat-button routerLink="banking" class="h-12 leading-5 p-0">
+    <mat-icon class="material-icons-round">stacked_line_chart</mat-icon>
+    <div class="font-medium text-xs mt-1">Summary</div>
+  </button>
+  <button mat-button routerLink="market" class="h-12 leading-5 p-0">
+    <mat-icon class="material-icons-round">local_offer</mat-icon>
+    <div class="font-medium text-xs mt-1">Products</div>
+  </button>
+  <button mat-button routerLink="trucking" class="h-12 leading-5 p-0">
+    <mat-icon class="material-icons-round">point_of_sale</mat-icon>
+    <div class="font-medium text-xs mt-1">Checkout</div>
+  </button>
+  <button mat-button routerLink="office" class="h-12 leading-5 p-0">
+    <mat-icon class="material-icons-round">assignment</mat-icon>
+    <div class="font-medium text-xs mt-1">Orders</div>
+  </button>
+  <button mat-button routerLink="information" class="h-12 leading-5 p-0">
+    <mat-icon class="material-icons-round">store</mat-icon>
+    <div class="font-medium text-xs mt-1">Store</div>
+  </button>
+</nav>
