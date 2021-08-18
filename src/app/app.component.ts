@@ -13,6 +13,8 @@ export class AppComponent {
     translate.setDefaultLang('ar-eg');
 
     this.languageDirectionChangeHandler();
+
+    this.checkBrowserDefaultLanguage();
   }
 
   //Check if the language changed is RTL or Not to change DOM direction
@@ -26,6 +28,7 @@ export class AppComponent {
     });
   }
 
+  //If the user's browser language doesn't match any of current language set it to English
   private checkBrowserDefaultLanguage(): void {
     const browserLang = this.translate.getBrowserLang();
     this.translate.use(browserLang.match(/en|ar|ar-eg/) ? browserLang : 'en');
