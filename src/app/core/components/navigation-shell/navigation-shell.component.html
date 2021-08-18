@@ -17,7 +17,11 @@
         </button>
         <!-- Return Button -->
         <button mat-icon-button class="block md:hidden">
-          <mat-icon svgIcon="back"></mat-icon>
+          <mat-icon
+            class="material-icons-round"
+            [ngClass]="{ 'rotate-icon': rtl }"
+            >chevron_left</mat-icon
+          >
         </button>
 
         <!-- Page Title -->
@@ -26,14 +30,33 @@
 
       <!-- Action Buttons -->
       <div class="flex items-center">
+        <button mat-icon-button [matMenuTriggerFor]="langMenu">
+          <mat-icon class="material-icons-round">translate</mat-icon>
+        </button>
         <!-- Help Button -->
         <button mat-icon-button>
-          <mat-icon svgIcon="help">help_outline</mat-icon>
+          <mat-icon class="material-icons-round">help_outline</mat-icon>
         </button>
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
 </header>
+<!-- Language Menu -->
+<mat-menu
+  #langMenu
+  class="nav-header--menu nav-header--user-menu"
+  xPosition="before"
+>
+  <button mat-menu-item (click)="changeLang('en')">
+    <span>{{ "Global.Language.en" | translate }}</span>
+  </button>
+  <button mat-menu-item (click)="changeLang('ar-eg')">
+    <span>{{ "Global.Language.ar-eg" | translate }}</span>
+  </button>
+  <button mat-menu-item (click)="changeLang('ar')">
+    <span>{{ "Global.Language.ar" | translate }}</span>
+  </button>
+</mat-menu>
 <!-------------------SIDENAV--------------------- -->
 <mat-sidenav-container class="sidenav-container" [hasBackdrop]="false">
   <mat-sidenav
@@ -136,7 +159,7 @@
         <span class="mx-4">{{ "Navigation.category" }}</span>
       </mat-list-item>
       <mat-list-item
-        class="flex items-center my-2"
+        class="flex items-center my-2 place-self-end"
         [routerLinkActive]="['is-active']"
         routerLink="/app/summary"
       >
@@ -172,22 +195,32 @@
 >
   <button mat-button routerLink="banking" class="h-12 leading-5 p-0">
     <mat-icon class="material-icons-round">stacked_line_chart</mat-icon>
-    <div class="font-medium text-xs mt-1">Summary</div>
+    <div class="font-medium text-xs mt-1">
+      {{ "Navigation.summary" | translate }}
+    </div>
   </button>
   <button mat-button routerLink="market" class="h-12 leading-5 p-0">
     <mat-icon class="material-icons-round">local_offer</mat-icon>
-    <div class="font-medium text-xs mt-1">Products</div>
+    <div class="font-medium text-xs mt-1">
+      {{ "Navigation.products" | translate }}
+    </div>
   </button>
   <button mat-button routerLink="trucking" class="h-12 leading-5 p-0">
     <mat-icon class="material-icons-round">point_of_sale</mat-icon>
-    <div class="font-medium text-xs mt-1">Checkout</div>
+    <div class="font-medium text-xs mt-1">
+      {{ "Navigation.checkout" | translate }}
+    </div>
   </button>
   <button mat-button routerLink="office" class="h-12 leading-5 p-0">
     <mat-icon class="material-icons-round">assignment</mat-icon>
-    <div class="font-medium text-xs mt-1">Orders</div>
+    <div class="font-medium text-xs mt-1">
+      {{ "Navigation.orders" | translate }}
+    </div>
   </button>
   <button mat-button routerLink="information" class="h-12 leading-5 p-0">
     <mat-icon class="material-icons-round">store</mat-icon>
-    <div class="font-medium text-xs mt-1">Store</div>
+    <div class="font-medium text-xs mt-1">
+      {{ "Navigation.store" | translate }}
+    </div>
   </button>
 </nav>
