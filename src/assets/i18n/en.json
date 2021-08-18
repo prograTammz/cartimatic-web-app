@@ -4,6 +4,12 @@
       "en": "🇬🇧  English",
       "ar-eg": "🇪🇬  مصري",
       "ar": "🇸🇦  عربية"
+    },
+    "Pages": {
+      "products": "Products",
+      "new-product": "New Product",
+      "edit-product": "Edit Product",
+      "product-details": "Product Details"
     }
   },
   "Navigation": {
