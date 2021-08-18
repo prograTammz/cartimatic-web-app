@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from '../../src/environments/environment';
 import {
   HttpClientModule,
   HttpClient,
@@ -8,6 +9,16 @@ import {
 } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+
+/* Translate */
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+/* Ngxs */
+import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 
 //Core Components
 import { AppComponent } from './app.component';
@@ -53,8 +64,28 @@ const angularMaterialImports = [
     BrowserAnimationsModule,
     HttpClientModule,
     ...angularMaterialImports,
+    NgxsModule.forRoot([], {
+      developmentMode: !environment.production,
+    }),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot(),
+    NgxsStoragePluginModule.forRoot({
+      key: ['auth.token', 'auth.refresh', 'auth.tokenBody'],
+    }),
+    TranslateModule.forRoot({
+      isolate: false,
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+export function HttpLoaderFactory(httpClient: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(httpClient);
+}
