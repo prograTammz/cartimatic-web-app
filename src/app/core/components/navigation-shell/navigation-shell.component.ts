@@ -121,6 +121,7 @@ export class NavigationShellComponent implements OnInit {
     rt.data.subscribe((data) => {
       this.showBack = data.showBack;
       this.pageName = data.pageName;
+      document.title = this.translate.instant(this.pageName);
     });
   }
 
