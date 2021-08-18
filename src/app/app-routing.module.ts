@@ -3,6 +3,7 @@ import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { NavigationShellComponent } from './core/components/navigation-shell/navigation-shell.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'app', pathMatch: 'full' },
   {
     path: 'app',
     component: NavigationShellComponent,
