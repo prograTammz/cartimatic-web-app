@@ -20,6 +20,7 @@ export class AppComponent {
   //Check if the language changed is RTL or Not to change DOM direction
   private languageDirectionChangeHandler(): void {
     this.translate.onLangChange.subscribe((langChange) => {
+      document.documentElement.lang = langChange.lang;
       if (langChange.lang === 'ar' || langChange.lang === 'ar-eg') {
         document.dir = 'rtl';
       } else {
