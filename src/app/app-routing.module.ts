@@ -1,17 +1,30 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {NavigationShellComponent} from './core/components/navigation-shell/navigation-shell.component';
+import { NavigationShellComponent } from './core/components/navigation-shell/navigation-shell.component';
 
 const routes: Routes = [
   {
     path: 'app',
     component: NavigationShellComponent,
-    children: []
-  }
+    children: [
+      {
+        path: 'product',
+        loadChildren: () =>
+          import('./pages/products/products.module').then(
+            (m) => m.ProductsModule
+          ),
+      },
+      {
+        path: 'order',
+        loadChildren: () =>
+          import('./pages/order/order.module').then((m) => m.OrderModule),
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
