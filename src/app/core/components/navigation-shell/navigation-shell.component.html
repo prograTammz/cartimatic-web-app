@@ -174,7 +174,9 @@
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content class="mt-12 md:mt-16 bg-gray-200 dark:bg-black h-full">
+  <mat-sidenav-content
+    class="mt-12 md:mt-16 bg-gray-200 dark:bg-gray-900 h-full"
+  >
     <main [@routeAnimations]="prepareRoute(outlet)">
       <router-outlet #outlet="outlet"></router-outlet>
     </main>
@@ -207,7 +209,7 @@
       {{ "Navigation.summary" | translate }}
     </div>
   </button>
-  <button mat-button routerLink="app/products" class="h-12 leading-5 p-0">
+  <button mat-button routerLink="products" class="h-12 leading-5 p-0">
     <mat-icon class="material-icons-round">local_offer</mat-icon>
     <div class="font-medium text-xs mt-1">
       {{ "Navigation.products" | translate }}
