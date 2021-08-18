@@ -8,7 +8,7 @@
         <!-- Menu Button -->
         <button
           mat-icon-button
-          class="hidden md:block"
+          class="hidden md:block mr-2"
           aria-label="Toggle side menu"
           role="button"
           (click)="sideNav.toggle()"
@@ -16,7 +16,13 @@
           <mat-icon class="material-icons-round">menu</mat-icon>
         </button>
         <!-- Return Button -->
-        <button mat-icon-button class="block md:hidden">
+        <button
+          mat-icon-button
+          *ngIf="showBack"
+          class="block md:hidden mr-2"
+          aria-label="Return Back"
+          (click)="goBack()"
+        >
           <mat-icon
             class="material-icons-round"
             [ngClass]="{ 'rotate-icon': rtl }"
@@ -25,7 +31,7 @@
         </button>
 
         <!-- Page Title -->
-        <span class="font-medium text-lg ml-2">Products</span>
+        <span class="font-medium text-lg">{{ pageName | translate }}</span>
       </div>
 
       <!-- Action Buttons -->
@@ -168,8 +174,10 @@
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content class="mt-12 md:mt-16 bg-gray-200 dark:bg-black h-full">
-    content
+  <mat-sidenav-content class="mt-6 md:mt-8 bg-gray-200 dark:bg-black h-full">
+    <main [@routeAnimations]="prepareRoute(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </main>
   </mat-sidenav-content>
 </mat-sidenav-container>
 
@@ -199,7 +207,7 @@
       {{ "Navigation.summary" | translate }}
     </div>
   </button>
-  <button mat-button routerLink="market" class="h-12 leading-5 p-0">
+  <button mat-button routerLink="app/products" class="h-12 leading-5 p-0">
     <mat-icon class="material-icons-round">local_offer</mat-icon>
     <div class="font-medium text-xs mt-1">
       {{ "Navigation.products" | translate }}
