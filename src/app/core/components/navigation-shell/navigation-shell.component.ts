@@ -1,14 +1,23 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
-import { MatIconRegistry } from '@angular/material/icon';
+import { Location } from '@angular/common';
 import { MatSidenav } from '@angular/material/sidenav';
-import { DomSanitizer } from '@angular/platform-browser';
-import { NavigationStart, Router } from '@angular/router';
+import {
+  ActivatedRoute,
+  ActivationStart,
+  ActivationEnd,
+  Router,
+  RouterOutlet,
+  NavigationEnd,
+} from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { slider } from 'src/app/app-routing.animation';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navigation-shell',
   templateUrl: './navigation-shell.component.html',
   styleUrls: ['./navigation-shell.component.scss'],
+  animations: [slider],
 })
 export class NavigationShellComponent implements OnInit {
   @ViewChild('sideNav') sideNav: MatSidenav;
@@ -17,21 +26,46 @@ export class NavigationShellComponent implements OnInit {
   public isDesktop: boolean;
   public lang: string;
   public rtl: boolean;
-  constructor(public router: Router, public translate: TranslateService) {
+  public pageName: string;
+  public showBack: boolean;
+  constructor(
+    private router: Router,
+    private translate: TranslateService,
+    private location: Location,
+    private activatedRoute: ActivatedRoute
+  ) {
     this.viewWidth = 0;
     this.isDesktop = false;
-    this.lang = 'ar-eg';
-    this.rtl = true;
+    this.lang = 'en';
+    this.rtl = false;
+    this.showBack = false;
+    this.pageName = '';
   }
 
   ngOnInit(): void {
     this.checkViewWidth();
-    this.handleNewNavigation();
+    this.handleNavigationStart();
+    this.handleNavigationEnd();
     this.handleLangChange();
+    this.getRouteDate();
   }
 
+  //Changes the APP language
   public changeLang(lang: string): void {
     this.translate.use(lang);
+  }
+
+  //Router back to previous route
+  public goBack(): void {
+    this.location.back();
+  }
+
+  public prepareRoute(outlet: RouterOutlet) {
+    return (
+      outlet &&
+      outlet.activatedRouteData &&
+      outlet.activatedRouteData['animation']
+    );
   }
 
   private handleLangChange(): void {
@@ -55,11 +89,38 @@ export class NavigationShellComponent implements OnInit {
     }
   }
 
-  private handleNewNavigation(): void {
+  private handleNavigationStart(): void {
     this.router.events.subscribe((event) => {
-      if (event instanceof NavigationStart && !this.isDesktop) {
-        this.sideNav.close();
+      if (event instanceof ActivationStart) {
+        this.getRouteDate();
+        if (!this.isDesktop) {
+          this.sideNav.close();
+        }
       }
+    });
+  }
+
+  private handleNavigationEnd(): void {
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.getRouteDate();
+      });
+  }
+
+  private getChild(activatedRoute: ActivatedRoute) {
+    if (activatedRoute.firstChild) {
+      return this.getChild(activatedRoute.firstChild);
+    } else {
+      return activatedRoute;
+    }
+  }
+
+  private getRouteDate(): void {
+    let rt = this.getChild(this.activatedRoute);
+    rt.data.subscribe((data) => {
+      this.showBack = data.showBack;
+      this.pageName = data.pageName;
     });
   }
 
