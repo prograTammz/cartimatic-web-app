@@ -22,7 +22,11 @@
     "@angular/router": "~12.2.0",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
+    "@ngxs/storage-plugin": "^3.7.1",
+    "@ngxs/devtools-plugin": "^3.7.1",
+    "@ngxs/logger-plugin": "^3.6.2-dev.master-eaa5d86",
     "@ngxs/store": "^3.7.2",
+    "jwt-decode": "^3.1.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
