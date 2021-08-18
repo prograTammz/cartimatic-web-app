@@ -19,7 +19,7 @@
         <button
           mat-icon-button
           *ngIf="showBack"
-          class="block md:hidden mr-2"
+          class="block xl:hidden mr-2"
           aria-label="Return Back"
           (click)="goBack()"
         >
@@ -72,7 +72,7 @@
     [mode]="isDesktop ? 'side' : 'over'"
     class="bg-gray-50 dark:bg-gray-700 mt-16 fixed w-64 border-0"
   >
-    <mat-nav-list class="flex flex-col">
+    <mat-nav-list class="flex flex-col h-full">
       <mat-list-item
         class="flex items-center my-2"
         [routerLinkActive]="['is-active']"
@@ -165,7 +165,7 @@
         <span class="mx-4">{{ "Navigation.category" }}</span>
       </mat-list-item>
       <mat-list-item
-        class="flex items-center my-2 place-self-end"
+        class="flex items-center my-2"
         [routerLinkActive]="['is-active']"
         routerLink="/app/summary"
       >
@@ -174,7 +174,7 @@
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content class="mt-6 md:mt-8 bg-gray-200 dark:bg-black h-full">
+  <mat-sidenav-content class="mt-12 md:mt-16 bg-gray-200 dark:bg-black h-full">
     <main [@routeAnimations]="prepareRoute(outlet)">
       <router-outlet #outlet="outlet"></router-outlet>
     </main>
