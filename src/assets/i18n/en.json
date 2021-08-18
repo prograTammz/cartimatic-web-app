@@ -1,0 +1,30 @@
+{
+  "Global": {
+    "Language": {
+      "en": "🇬🇧  English",
+      "ar-eg": "🇪🇬  مصري",
+      "ar": "🇸🇦  عربية"
+    }
+  },
+  "Navigation": {
+    "summary": "Summary",
+    "catalogue": "Products Catalogue",
+    "stock": "Stock & Inventory",
+    "category": "Category",
+    "checkout": "Checkout",
+    "orders": "Orders",
+    "customers": "Customers",
+    "staff": "Staff",
+    "settings": "Settings",
+    "help": "Help & Support",
+    "products": "Products",
+    "store": "Store"
+  },
+  "Auth": {},
+  "Products": {},
+  "Orders": {},
+  "POS": {},
+  "Store": {},
+  "Summary": {},
+  "Settings": {}
+}
