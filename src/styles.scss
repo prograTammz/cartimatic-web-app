@@ -36,7 +36,7 @@ $theme: map_merge(
 @include angular-material-theme($theme);
 
 .dark {
-  background-color: black;
+  background-color: #14142b;
   color: white;
 
   $theme: map_merge(
