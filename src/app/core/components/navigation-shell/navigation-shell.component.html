@@ -203,31 +203,56 @@
     z-10
   "
 >
-  <button mat-button routerLink="banking" class="h-12 leading-5 p-0">
+  <button
+    mat-button
+    routerLink="banking"
+    class="h-12 leading-5 p-0 transition-colors duration-500 ease-in-out"
+    [routerLinkActive]="['dark:text-purple-300', 'text-purple-600']"
+  >
     <mat-icon class="material-icons-round">stacked_line_chart</mat-icon>
     <div class="font-medium text-xs mt-1">
       {{ "Navigation.summary" | translate }}
     </div>
   </button>
-  <button mat-button routerLink="products" class="h-12 leading-5 p-0">
+  <button
+    mat-button
+    routerLink="products"
+    class="h-12 leading-5 p-0 transition-colors duration-500 ease-in-out"
+    [routerLinkActive]="['dark:text-purple-300', 'text-purple-600']"
+  >
     <mat-icon class="material-icons-round">local_offer</mat-icon>
     <div class="font-medium text-xs mt-1">
       {{ "Navigation.products" | translate }}
     </div>
   </button>
-  <button mat-button routerLink="trucking" class="h-12 leading-5 p-0">
+  <button
+    mat-button
+    routerLink="trucking"
+    class="h-12 leading-5 p-0 transition-colors duration-500 ease-in-out"
+    [routerLinkActive]="['dark:text-purple-300', 'text-purple-600']"
+  >
     <mat-icon class="material-icons-round">point_of_sale</mat-icon>
     <div class="font-medium text-xs mt-1">
       {{ "Navigation.checkout" | translate }}
     </div>
   </button>
-  <button mat-button routerLink="office" class="h-12 leading-5 p-0">
+  <button
+    mat-button
+    routerLink="office"
+    class="h-12 leading-5 p-0 transition-colors duration-500 ease-in-out"
+    [routerLinkActive]="['dark:text-purple-300', 'text-purple-600']"
+  >
     <mat-icon class="material-icons-round">assignment</mat-icon>
     <div class="font-medium text-xs mt-1">
       {{ "Navigation.orders" | translate }}
     </div>
   </button>
-  <button mat-button routerLink="information" class="h-12 leading-5 p-0">
+  <button
+    mat-button
+    routerLink="information"
+    class="h-12 leading-5 p-0 transition-colors duration-500 ease-in-out"
+    [routerLinkActive]="['dark:text-purple-300', 'text-purple-600']"
+  >
     <mat-icon class="material-icons-round">store</mat-icon>
     <div class="font-medium text-xs mt-1">
       {{ "Navigation.store" | translate }}
