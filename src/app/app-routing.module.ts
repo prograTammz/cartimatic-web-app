@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { NavigationShellComponent } from './core/components/navigation-shell/navigation-shell.component';
 
 const routes: Routes = [
@@ -8,14 +8,14 @@ const routes: Routes = [
     component: NavigationShellComponent,
     children: [
       {
-        path: 'product',
+        path: 'products',
         loadChildren: () =>
           import('./pages/products/products.module').then(
             (m) => m.ProductsModule
           ),
       },
       {
-        path: 'order',
+        path: 'orders',
         loadChildren: () =>
           import('./pages/order/order.module').then((m) => m.OrderModule),
       },
@@ -34,7 +34,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules,
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
