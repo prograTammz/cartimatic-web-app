@@ -3,6 +3,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { MatSidenav } from '@angular/material/sidenav';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NavigationStart, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navigation-shell',
@@ -15,20 +16,33 @@ export class NavigationShellComponent implements OnInit {
   public viewWidth: number;
   public isDesktop: boolean;
   public lang: string;
-  constructor(
-    public router: Router,
-    private matIconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer
-  ) {
-    this.addIcons();
+  public rtl: boolean;
+  constructor(public router: Router, public translate: TranslateService) {
     this.viewWidth = 0;
     this.isDesktop = false;
-    this.lang = 'en';
+    this.lang = 'ar-eg';
+    this.rtl = true;
   }
 
   ngOnInit(): void {
     this.checkViewWidth();
     this.handleNewNavigation();
+    this.handleLangChange();
+  }
+
+  public changeLang(lang: string): void {
+    this.translate.use(lang);
+  }
+
+  private handleLangChange(): void {
+    this.translate.onLangChange.subscribe((langChange) => {
+      this.lang = langChange.lang;
+      if (langChange.lang === 'ar' || langChange.lang === 'ar-eg') {
+        this.rtl = true;
+      } else {
+        this.rtl = false;
+      }
+    });
   }
 
   // Getting view width while init
