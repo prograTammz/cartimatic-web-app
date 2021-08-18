@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable({
@@ -8,30 +9,32 @@ export class ThemeService {
   private _themeDark: Subject<Boolean> = new Subject<Boolean>();
   isThemeDark: Observable<Boolean> = this._themeDark.asObservable();
 
-  constructor() {}
+  constructor(private meta: Meta) {}
 
   toggleTheme(): void {
-    this._themeDark.next(!this.isThemeDark);
-    let bodyElementClasses = document.body.classList;
-    bodyElementClasses.toggle('dark');
-    //TODO: Dispatch settings action
+    if (this.isThemeDark) {
+      this.setLightTheme();
+    } else {
+      this.setDarkTheme();
+    }
   }
 
   setDarkTheme(): void {
-    this._themeDark.next(true);
     let bodyElementClasses = document.body.classList;
     if (!bodyElementClasses.contains('dark')) {
+      this._themeDark.next(true);
       document.body.classList.add('dark');
+      this.meta.updateTag({ content: '#14142B' }, 'name=theme-color');
     }
     //TODO: Dispatch settings action
   }
 
   setLightTheme(): void {
-    this._themeDark.next(true);
-
     let bodyElementClasses = document.body.classList;
     if (bodyElementClasses.contains('dark')) {
+      this._themeDark.next(false);
       document.body.classList.remove('dark');
+      this.meta.updateTag({ content: '#f7f7fc' }, 'name=theme-color');
     }
     //TODO: Dispatch settings action
   }
