@@ -36,9 +36,46 @@
 
       <!-- Action Buttons -->
       <div class="flex items-center">
-        <button mat-icon-button [matMenuTriggerFor]="langMenu">
-          <mat-icon class="material-icons-round">translate</mat-icon>
-        </button>
+        <div [dir]="rtl ? 'rtl' : 'ltr'">
+          <button mat-icon-button [matMenuTriggerFor]="langMenu">
+            <mat-icon class="material-icons-round">translate</mat-icon>
+          </button>
+          <mat-menu
+            #langMenu
+            class="nav-header--menu nav-header--user-menu"
+            xPosition="before"
+          >
+            <button mat-menu-item (click)="changeLang('en')">
+              <mat-icon svgIcon="gb"></mat-icon>
+              <span>{{ "Global.Language.en-uk" | translate }}</span>
+            </button>
+            <button mat-menu-item (click)="changeLang('en')">
+              <mat-icon svgIcon="us"></mat-icon>
+              <span>{{ "Global.Language.en-us" | translate }}</span>
+            </button>
+            <button mat-menu-item (click)="changeLang('es')">
+              <mat-icon svgIcon="es"></mat-icon>
+              <span>{{ "Global.Language.es" | translate }}</span>
+            </button>
+            <button mat-menu-item (click)="changeLang('ar-eg')">
+              <mat-icon svgIcon="eg"></mat-icon>
+              <span>{{ "Global.Language.ar-eg" | translate }}</span>
+            </button>
+            <button mat-menu-item (click)="changeLang('ar')">
+              <mat-icon svgIcon="sa"></mat-icon>
+              <span>{{ "Global.Language.ar" | translate }}</span>
+            </button>
+            <button mat-menu-item (click)="changeLang('tr')">
+              <mat-icon svgIcon="tr"></mat-icon>
+              <span>{{ "Global.Language.tr" | translate }}</span>
+            </button>
+            <button mat-menu-item (click)="changeLang('in')">
+              <mat-icon svgIcon="in"></mat-icon>
+              <span>{{ "Global.Language.in" | translate }}</span>
+            </button>
+          </mat-menu>
+        </div>
+
         <!-- Help Button -->
         <button mat-icon-button>
           <mat-icon class="material-icons-round">help_outline</mat-icon>
@@ -48,21 +85,7 @@
   </mat-toolbar>
 </header>
 <!-- Language Menu -->
-<mat-menu
-  #langMenu
-  class="nav-header--menu nav-header--user-menu"
-  xPosition="before"
->
-  <button mat-menu-item (click)="changeLang('en')">
-    <span>{{ "Global.Language.en" | translate }}</span>
-  </button>
-  <button mat-menu-item (click)="changeLang('ar-eg')">
-    <span>{{ "Global.Language.ar-eg" | translate }}</span>
-  </button>
-  <button mat-menu-item (click)="changeLang('ar')">
-    <span>{{ "Global.Language.ar" | translate }}</span>
-  </button>
-</mat-menu>
+
 <!-------------------SIDENAV--------------------- -->
 <mat-sidenav-container class="sidenav-container" [hasBackdrop]="false">
   <mat-sidenav
@@ -79,7 +102,9 @@
         routerLink="/app/summary"
       >
         <mat-icon class="material-icons-round">stacked_line_chart</mat-icon>
-        <span class="mx-4 font-medium">{{ "Navigation.summary" }}</span>
+        <span class="mx-4 font-medium">{{
+          "Navigation.summary" | translate
+        }}</span>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item
@@ -88,7 +113,7 @@
         routerLink="/app/summary"
       >
         <mat-icon class="material-icons-round"> menu_book</mat-icon>
-        <span class="mx-4">{{ "Navigation.product_catalogue" }}</span>
+        <span class="mx-4">{{ "Navigation.catalogue" | translate }}</span>
       </mat-list-item>
       <mat-list-item
         class="flex items-center my-2"
@@ -96,7 +121,7 @@
         routerLink="/app/summary"
       >
         <mat-icon class="material-icons-round"> inventory_2</mat-icon>
-        <span class="mx-4">{{ "Navigation.stock" }}</span>
+        <span class="mx-4">{{ "Navigation.stock" | translate }}</span>
       </mat-list-item>
       <mat-list-item
         class="flex items-center my-2"
@@ -104,7 +129,7 @@
         routerLink="/app/summary"
       >
         <mat-icon class="material-icons-round"> category</mat-icon>
-        <span class="mx-4">{{ "Navigation.category" }}</span>
+        <span class="mx-4">{{ "Navigation.category" | translate }}</span>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item
@@ -113,7 +138,7 @@
         routerLink="/app/summary"
       >
         <mat-icon class="material-icons-round"> point_of_sale</mat-icon>
-        <span class="mx-4">{{ "Navigation.category" }}</span>
+        <span class="mx-4">{{ "Navigation.checkout" | translate }}</span>
       </mat-list-item>
       <mat-list-item
         class="flex items-center my-2"
@@ -121,7 +146,7 @@
         routerLink="/app/summary"
       >
         <mat-icon class="material-icons-round"> assignment</mat-icon>
-        <span class="mx-4">{{ "Navigation.category" }}</span>
+        <span class="mx-4">{{ "Navigation.orders" | translate }}</span>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item
@@ -130,7 +155,7 @@
         routerLink="/app/summary"
       >
         <mat-icon class="material-icons-round"> people</mat-icon>
-        <span class="mx-4">{{ "Navigation.category" }}</span>
+        <span class="mx-4">{{ "Navigation.customers" | translate }}</span>
       </mat-list-item>
       <mat-list-item
         class="flex items-center my-2"
@@ -138,43 +163,29 @@
         routerLink="/app/summary"
       >
         <mat-icon class="material-icons-round"> engineering</mat-icon>
-        <span class="mx-4">{{ "Navigation.category" }}</span>
+        <span class="mx-4">{{ "Navigation.staff" | translate }}</span>
       </mat-list-item>
+      <mat-divider></mat-divider>
       <mat-list-item
         class="flex items-center my-2"
         [routerLinkActive]="['is-active']"
         routerLink="/app/summary"
       >
-        <mat-icon class="material-icons-round"> manage_accounts</mat-icon>
-        <span class="mx-4">{{ "Navigation.category" }}</span>
+        <mat-icon class="material-icons-round"> store</mat-icon>
+        <span class="mx-4">{{ "Navigation.store" | translate }}</span>
       </mat-list-item>
       <mat-list-item
-        class="flex items-center my-2"
-        [routerLinkActive]="['is-active']"
-        routerLink="/app/summary"
-      >
-        <mat-icon class="material-icons-round"> settings</mat-icon>
-        <span class="mx-4">{{ "Navigation.category" }}</span>
-      </mat-list-item>
-      <mat-list-item
-        class="flex items-center my-2"
-        [routerLinkActive]="['is-active']"
-        routerLink="/app/summary"
-      >
-        <mat-icon class="material-icons-round"> settings</mat-icon>
-        <span class="mx-4">{{ "Navigation.category" }}</span>
-      </mat-list-item>
-      <mat-list-item
-        class="flex items-center my-2"
+        class="flex items-center my-2 mt-auto"
         [routerLinkActive]="['is-active']"
         routerLink="/app/summary"
       >
         <mat-icon class="material-icons-round"> contact_support</mat-icon>
-        <span class="mx-4">{{ "Navigation.category" }}</span>
+        <span class="mx-4">{{ "Navigation.help" | translate }}</span>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content
+    [ngClass]="{ 'rtl-margin': rtl && isDesktop && sideNav.opened }"
     class="mt-12 md:mt-16 bg-gray-200 dark:bg-gray-900 h-full"
   >
     <main [@routeAnimations]="prepareRoute(outlet)">
