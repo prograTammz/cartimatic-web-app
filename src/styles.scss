@@ -71,3 +71,7 @@ $custom-colors: map-get($theme, custom);
   background-color: mat-color($custom-colors, danger);
   color: mat-color($custom-colors, danger-contrast);
 }
+
+.mat-list-item-content {
+  width: 100%;
+}
