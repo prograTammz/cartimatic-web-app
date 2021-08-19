@@ -1,0 +1,40 @@
+{
+  "Global": {
+    "Language": {
+      "en-us": "English US",
+      "en-uk": "English UK",
+      "ar-eg": "مصري",
+      "ar": "العربية",
+      "in": "हिन्दी",
+      "tr": "Türkçe",
+      "es": "Español"
+    },
+    "Pages": {
+      "products": "उत्पादों",
+      "new-product": "नया उत्पाद",
+      "edit-product": "उत्पाद संपादित करें",
+      "product-details": "उत्पाद विवरण"
+    }
+  },
+  "Navigation": {
+    "summary": "सारांश",
+    "catalogue": "उत्पाद सूची",
+    "stock": "स्टॉक और इन्वेंट्री",
+    "category": "वर्ग",
+    "checkout": "चेकआउट",
+    "orders": "आदेश",
+    "customers": "ग्राहकों",
+    "staff": "स्टाफ़",
+    "settings": "सेटिंग्स",
+    "help": "मदद और समर्थन",
+    "products": "उत्पादों",
+    "store": "दुकान"
+  },
+  "Auth": {},
+  "Products": {},
+  "Orders": {},
+  "POS": {},
+  "Store": {},
+  "Summary": {},
+  "Settings": {}
+}

@@ -1,0 +1,40 @@
+{
+  "Global": {
+    "Language": {
+      "en-us": "English US",
+      "en-uk": "English UK",
+      "ar-eg": "مصري",
+      "ar": "العربية",
+      "in": "हिन्दी",
+      "tr": "Türkçe",
+      "es": "Español"
+    },
+    "Pages": {
+      "products": "Ürünler",
+      "new-product": "Yeni Ürün",
+      "edit-product": "Ürünü Düzenle",
+      "product-details": "Ürün Ayrıntıları"
+    }
+  },
+  "Navigation": {
+    "summary": "Özet",
+    "catalogue": "Ürünler Kataloğu",
+    "stock": "Stok ve Stok",
+    "category": "Kategori",
+    "checkout": "Kasa",
+    "orders": "Sipariş",
+    "customers": "Müşteri",
+    "staff": "Personel",
+    "settings": "Ayarlar",
+    "help": "Yardım ve Destek",
+    "products": "Ürünler",
+    "store": "Mağaza"
+  },
+  "Auth": {},
+  "Products": {},
+  "Orders": {},
+  "POS": {},
+  "Store": {},
+  "Summary": {},
+  "Settings": {}
+}

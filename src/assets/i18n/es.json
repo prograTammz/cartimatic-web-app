@@ -1,0 +1,40 @@
+{
+  "Global": {
+    "Language": {
+      "en-us": "English US",
+      "en-uk": "English UK",
+      "ar-eg": "مصري",
+      "ar": "العربية",
+      "in": "हिन्दी",
+      "tr": "Türkçe",
+      "es": "Español"
+    },
+    "Pages": {
+      "products": "Productos",
+      "new-product": "Nuevo producto",
+      "edit-product": "Editar producto",
+      "product-details": "Detalles del producto"
+    }
+  },
+  "Navigation": {
+    "summary": "Resumen",
+    "catalogue": "Catálogo de productos",
+    "stock": "Stock & Inventario",
+    "category": "Categoría",
+    "checkout": "Caja",
+    "orders": "Órdenes",
+    "customers": "Clientela",
+    "staff": "Personal",
+    "settings": "Configuración",
+    "help": "Ayuda & Soporte",
+    "products": "Productos",
+    "store": "Tienda"
+  },
+  "Auth": {},
+  "Products": {},
+  "Orders": {},
+  "POS": {},
+  "Store": {},
+  "Summary": {},
+  "Settings": {}
+}
