@@ -9,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   title = 'Cartimatic';
   constructor(public translate: TranslateService) {
-    translate.addLangs(['en', 'ar', 'ar-eg']);
+    translate.addLangs(['en', 'ar', 'ar-eg', 'in', 'tr', 'es']);
     translate.setDefaultLang('ar-eg');
 
     this.languageDirectionChangeHandler();
