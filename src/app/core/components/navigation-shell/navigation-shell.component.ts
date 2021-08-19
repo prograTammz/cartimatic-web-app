@@ -12,6 +12,8 @@ import {
 import { TranslateService } from '@ngx-translate/core';
 import { slider } from 'src/app/app-routing.animation';
 import { filter } from 'rxjs/operators';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-navigation-shell',
@@ -32,7 +34,9 @@ export class NavigationShellComponent implements OnInit {
     private router: Router,
     private translate: TranslateService,
     private location: Location,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private matIconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer
   ) {
     this.viewWidth = 0;
     this.isDesktop = false;
@@ -40,6 +44,7 @@ export class NavigationShellComponent implements OnInit {
     this.rtl = false;
     this.showBack = false;
     this.pageName = '';
+    this.addIcons();
   }
 
   ngOnInit(): void {
@@ -132,5 +137,36 @@ export class NavigationShellComponent implements OnInit {
     if (this.viewWidth > 1280) {
       this.isDesktop = true;
     }
+  }
+
+  private addIcons(): void {
+    this.matIconRegistry.addSvgIcon(
+      'eg',
+      this.sanitizer.bypassSecurityTrustResourceUrl('../../assets/flags/eg.svg')
+    );
+    this.matIconRegistry.addSvgIcon(
+      'es',
+      this.sanitizer.bypassSecurityTrustResourceUrl('../../assets/flags/es.svg')
+    );
+    this.matIconRegistry.addSvgIcon(
+      'gb',
+      this.sanitizer.bypassSecurityTrustResourceUrl('../../assets/flags/gb.svg')
+    );
+    this.matIconRegistry.addSvgIcon(
+      'in',
+      this.sanitizer.bypassSecurityTrustResourceUrl('../../assets/flags/in.svg')
+    );
+    this.matIconRegistry.addSvgIcon(
+      'sa',
+      this.sanitizer.bypassSecurityTrustResourceUrl('../../assets/flags/sa.svg')
+    );
+    this.matIconRegistry.addSvgIcon(
+      'tr',
+      this.sanitizer.bypassSecurityTrustResourceUrl('../../assets/flags/tr.svg')
+    );
+    this.matIconRegistry.addSvgIcon(
+      'us',
+      this.sanitizer.bypassSecurityTrustResourceUrl('../../assets/flags/us.svg')
+    );
   }
 }
